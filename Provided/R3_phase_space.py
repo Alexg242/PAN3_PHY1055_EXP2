@@ -20,3 +20,4 @@ def phase_space():
     # labels the axes
     plt.xlabel(r"$x$")
     plt.ylabel(r"$v$")
+

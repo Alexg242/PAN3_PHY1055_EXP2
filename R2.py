@@ -10,6 +10,8 @@ import matplotlib.pyplot as plt
 from scipy import integrate
 from R2_function_outlines import *
 
+plt.rcParams['figure.dpi'] = 300
+
 
 def main():
     y0 = np.array([0])
@@ -28,7 +30,7 @@ def main():
     plt.plot(t,y,'k.', markersize=5, label="Calulated Values")
 
     
-timestep = 0.5 #change in t
+timestep = 0.01 #change in t
 max_time = 20 #tmax
 
 time0 = 0 ##t
@@ -59,5 +61,5 @@ plt.title("Current vs Time")
 plt.ylabel("Current (I)")
 plt.xlabel("Time (s)")    
 plt.legend()
-plt.show()#%%   
+plt.show()  
 
