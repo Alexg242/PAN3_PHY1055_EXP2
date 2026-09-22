@@ -42,7 +42,8 @@ def loop_through(tf, n, omega_0, b, y0, A):
     n = 1001  # Number of points at which output will be evaluated
     amplitudes = []  # Create empty list to store amplitudes
     t = np.linspace(t0, tf, n)  # Points at which output will be evaluated
-    
+    damping_coefficients = []
+
     driving_freq = np.linspace(0, 2*omega_0, 100)
     
     # Loop through list of three driving frequencies (100%, 90%, 50% of omega0)
@@ -62,7 +63,7 @@ def loop_through(tf, n, omega_0, b, y0, A):
 
         amplitudes.append((max(x)-min(x))/2)  # F
         # Plot the result x(t) for this run, lable it with omegad as well
-    plt.plot(driving_freq, amplitudes)
+    plt.plot(driving_freq, amplitudes, "k-")
     # End of loop, continue with next omegad
     # Out of the loop
     # Save and show plot
@@ -71,5 +72,8 @@ def loop_through(tf, n, omega_0, b, y0, A):
 
 loop_through(30*np.pi, 1001, 1, 0.1, (0, 1), 1)
     
+axs.set_xlabel("Time(s)")
+axs.set_ylabel("Amplitude(x)")
+fig.suptitle("R7: Resonance")
 
 fig.show()  
