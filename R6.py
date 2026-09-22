@@ -26,7 +26,7 @@ def driven_pendulum(t, y, b=0.1, A=1, omega0=1, omegad=1):
     return dydt
 
 
-def loop_through(omega, b, tf, y0):
+def loop_through(omega, b, tf, y0, A):
     """
         THIS ISN'T REALLY A USABLE FUNCTION. IT'S INTENDED TO BE MERGED INTO YOUR REAL CODE
 
@@ -47,7 +47,7 @@ def loop_through(omega, b, tf, y0):
     for omegad in (omega, 0.9 * omega, 0.5 * omega):
        
         # Define the anonymous function, including the changing omegad
-        lfun = lambda t, y,: driven_pendulum(t, y, b, omega, omegad)
+        lfun = lambda t, y,: driven_pendulum(t, y, b, A, omega, omegad)
         # Call the solver for this definition of lfun
         result = integrate.solve_ivp(fun=lfun,
                                      t_span=(0, tf),
@@ -66,7 +66,7 @@ def loop_through(omega, b, tf, y0):
     ax1.legend()  # Make the plot labels visibl
 
 
-loop_through(1, 0.1, 100*np.pi, (0, 1))
+loop_through(1, 0.1, 100*np.pi, (0, 1), 1)
 
 """
 def main():
