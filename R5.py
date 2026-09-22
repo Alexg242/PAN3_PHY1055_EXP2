@@ -5,13 +5,6 @@ Created on Tue Sep 22 13:40:58 2026
 @author: alexg
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Sep 22 13:07:02 2026
-
-@author: alexg
-"""
-
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import integrate

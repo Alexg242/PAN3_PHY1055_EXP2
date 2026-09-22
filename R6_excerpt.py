@@ -3,13 +3,14 @@
 # THIS ISN'T WORKING CODE. IT ONLY WORKS IF YOU CORRECTLY INCORPORATE IT INTO YOUR CODE
 import matplotlib.pyplot as plt
 from scipy import integrate
+import numpy as np
 
-
-def driven_pendulum():
-    """
-    PLACEHOLDER: define this function yourself based on the previous damped_pendulum function
-    """
-    pass
+def driven_pendulum(t, y, omegad, b=0.1, A=1, omega0=1):
+    x, v = y
+    dxdt = v
+    dvdt = -b*v-(omega0**2)*x -A*np.sin(omegad*t)
+    dydt = np.array([dxdt, dvdt])
+    return dydt
 
 
 def loop_through(omega, b, tf, y0):
@@ -20,9 +21,18 @@ def loop_through(omega, b, tf, y0):
         the results on the same graph. It's important to note that the command plot(t,x)
         is placed within the loop.
     """
+    x0 = 0# initial position
+    v0 = 1# initial velocity
+    y0 = (x0, v0)  # initial state
+    t0 = 0  # initial time
+    tf = 100*np.pi  # final time
+    n = 1001  # Number of points at which output will be evaluated
+    # creates an array of the time steps
+    t = np.linspace(t0, tf, n)  # Points at which output will be evaluated
 
     # Loop through list of three driving frequencies (100%, 90%, 50% of omega0)
     for omegad in (omega, 0.9 * omega, 0.5 * omega):
+       
         # Define the anonymous function, including the changing omegad
         lfun = lambda t, y,: driven_pendulum(t, y, b, omega, omegad)
         # Call the solver for this definition of lfun
@@ -40,6 +50,3 @@ def loop_through(omega, b, tf, y0):
     # Out of the loop
     # Save and show plot
     plt.legend()  # Make the plot labels visible
-    plt.savefig('Oscillator-driven-multi.pdf', bbox_inches ='tight')
-    plt.show()
-

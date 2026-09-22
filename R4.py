@@ -68,6 +68,6 @@ ax2.set_xlabel("v")
 ax2.set_ylabel("x")
 ax1.set_title("x and v v time")
 ax2.set_title("x vs v")
-fig.suptitle("R3: Harmonic Oscillator")
+fig.suptitle("R4: Damped Harmonic Oscillator")
 
 fig.show()  
