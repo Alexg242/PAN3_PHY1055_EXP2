@@ -28,9 +28,15 @@ def main():
     t = result.t
 
     plt.plot(t,y,'k.', markersize=5, label="Calulated Values")
-
     
-timestep = 0.01 #change in t
+    temp = []
+    for i in t:
+        temp.append(exact_solution_rl(i))
+   
+    Comparison = (np.subtract(temp,y))
+    print(Comparison, t)
+    print(np.average(Comparison))
+timestep = 0.2 #change in t
 max_time = 20 #tmax
 
 time0 = 0 ##t
@@ -57,9 +63,10 @@ plt.plot(timet, quanityt, "b-", label="Exact Values")
 if __name__ == '__main__':
     main()
 
-plt.title("Current vs Time")
+plt.title("E2: Current vs Time")
 plt.ylabel("Current (I)")
 plt.xlabel("Time (s)")    
 plt.legend()
 plt.show()  
+
 

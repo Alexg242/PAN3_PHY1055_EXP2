@@ -15,7 +15,7 @@ a = 1
 b = 1
 
 def nonlinear1(t,y):
-    dydt = -y**3 + np.sin(t)
+    dydt = -a*y**3 + b*np.sin(t)
     return dydt
 
 def main():
@@ -31,12 +31,26 @@ def main():
                                  t_eval=t) 
     y = result.y[0]
     t = result.t
+    plt.plot(t,y,'.',label="Values a="+str(a)+", b="+str(b))
 
-    plt.plot(t,y,'k.',label="Exact Values")
-    plt.title("x Value vs Time")
-    plt.ylabel("x Value (x)")
-    plt.xlabel("Time (t)")
-    plt.show()
+main()
 
-if __name__ == '__main__':
-    main()
+a = 2
+b = 1
+main()
+
+a = 1
+b = 2
+main()
+
+a = 5
+b = 3
+main()
+
+
+plt.title("R1: x Value vs Time")
+plt.ylabel("x Value (x)")
+plt.xlabel("Time (t)")
+plt.legend(loc=8)
+plt.show()
+

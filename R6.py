@@ -18,7 +18,7 @@ fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 
 
 
-def driven_pendulum(t, y, b=0.1, A=1, omega0=1, omegad=1):
+def driven_pendulum(t, y, b=0.1, A=1, omega0=1, omegad=10):
     x, v = y
     dxdt = v
     dvdt = -b*v-(omega0**2)*x -A*np.sin(omegad*t)
@@ -66,7 +66,7 @@ def loop_through(omega, b, tf, y0, A):
     ax1.legend()  # Make the plot labels visibl
 
 
-loop_through(1, 0.1, 100*np.pi, (0, 1), 1)
+loop_through(10, 0.1, 100*np.pi, (0, 1), 1)
 
 """
 def main():

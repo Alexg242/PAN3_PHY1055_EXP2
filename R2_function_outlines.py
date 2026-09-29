@@ -12,7 +12,7 @@ from scipy import integrate
 
 V = 10
 R = 50
-L = 100
+L = 10
 
 def differential_rl(t, i):
     """

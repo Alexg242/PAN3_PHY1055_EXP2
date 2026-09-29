@@ -21,7 +21,7 @@ plt.rcParams['figure.dpi'] = 300
 fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 5))
 
 
-def damped_pendulum(t, y, b=0.1, omega0=1):
+def damped_pendulum(t, y, b=10, omega0=1):
     x, v = y
     dxdt = v
     dvdt = -b*v-(omega0**2)*x
